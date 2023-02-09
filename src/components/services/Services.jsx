@@ -1,19 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './services.css'
 import TodoApp from '../components-todo/TodoApp'
+import ResponsiveScr from '../helper'
 
 const Services = () => {
     const [toggleState, setToggleState] = useState(0)
     const toggleTab = (index) =>{
         setToggleState(index)
     }
+
+    const [show, setShow] = useState(true);
+    const viewPort = ResponsiveScr()
+    const isMobile = (viewPort.width <= 480);
+    const isTablet = (viewPort.width >= 481 && viewPort.width <= 768);
+    const isLaptopScreen = (viewPort.width >= 769 && viewPort.width <= 1024);
+
+    useEffect(() => {
+        if (isMobile || isTablet || isLaptopScreen) {
+            setShow(false);
+        } else {
+            setShow(true);
+        }
+    }, []);
+
     return (
         <section className="services section" id="services">
             <h2 className="section__title">Services</h2>
             <span className="section__subtitle">With some another skills</span>
 
             <div className="services__container container grid">
-                <div className="services__content">
+                {
+                    show && <div className="services__content">
                     <div>
                         <i className="uil uil-web-grid services__icon"></i>
                         <h3 className="services__title">Product</h3>
@@ -27,38 +44,11 @@ const Services = () => {
 
                             <h3 className="services__modal-title">Product</h3>
                             <p className="services__modal-description">Try TodoApp, what your plan?</p>
-
-                            {/* <ul className="services__modal-services grid">
-                                <li className="services__modal-service">
-                                    <i className="uil uil-check-circle services__modal-icon"></i>
-                                    <p className="services__modal-info">Lorem ipsum dolor sit amet.</p>
-                                </li>
-
-                                <li className="services__modal-service">
-                                    <i className="uil uil-check-circle services__modal-icon"></i>
-                                    <p className="services__modal-info">Lorem ipsum dolor sit amet.</p>
-                                </li>
-
-                                <li className="services__modal-service">
-                                    <i className="uil uil-check-circle services__modal-icon"></i>
-                                    <p className="services__modal-info">Lorem ipsum dolor sit amet.</p>
-                                </li>
-
-                                <li className="services__modal-service">
-                                    <i className="uil uil-check-circle services__modal-icon"></i>
-                                    <p className="services__modal-info">Lorem ipsum dolor sit amet.</p>
-                                </li>
-
-                                <li className="services__modal-service">
-                                    <i className="uil uil-check-circle services__modal-icon"></i>
-                                    <p className="services__modal-info">Lorem ipsum dolor sit amet.</p>
-                                </li>
-                            </ul> */}
-
                             <TodoApp/>
                         </div>
                     </div>
                 </div>
+                }
 
                 <div className="services__content">
                     <div>

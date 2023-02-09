@@ -113,4 +113,13 @@
     .qualification__data{
         gap: 0.5rem;
     }
+    .qualification__icon{
+        font-style: 12px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .qualification__icon{
+        font-size: 15px;
+    }
 }

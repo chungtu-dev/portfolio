@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TrackVisibility from 'react-on-screen';
 import 'animate.css'
+import './home.css'
 const Data = () => {
 
     const [loopNum, setLoopNum] = useState(0);

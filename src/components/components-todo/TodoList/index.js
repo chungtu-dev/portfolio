@@ -1,5 +1,6 @@
 import { Col, Row, Input, Button, Select, Tag } from 'antd';
 import Todo from '../Todo';
+import Filter from '../Filters'
 import { useDispatch, useSelector } from 'react-redux'
 // import { addTodo } from '../../redux/actions'
 import { v4 as uuid4 } from 'uuid'
@@ -29,11 +30,11 @@ export default function TodoList() {
     //toolkit:
     dispatch(
       todoListSlice.actions.addTodo({
-      id: uuid4(),
-      name: todoName,
-      priority: priority,
-      completed: false,
-    }))
+        id: uuid4(),
+        name: todoName,
+        priority: priority,
+        completed: false,
+      }))
 
     setTodoName('')
     setPriority('Medium')
@@ -52,11 +53,12 @@ export default function TodoList() {
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
         {todoList.map((todo) => (
           <Todo
-            key={todo.id}
-            id={todo.id}
-            name={todo.name}
-            priority={todo.priority}
-            completed={todo.completed} />))}
+          key={todo.id}
+          id={todo.id}
+          name={todo.name}
+          priority={todo.priority}
+          completed={todo.completed} />
+        ))}
       </Col>
       <Col span={24}>
         <Input.Group style={{ display: 'flex' }} compact>

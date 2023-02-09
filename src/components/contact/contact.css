@@ -103,7 +103,7 @@
     height: 11rem;
 }
 
-.contact__form-area area {
+.contact__form-area .textArea {
     resize: none;
 }
 

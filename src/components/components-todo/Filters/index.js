@@ -1,13 +1,17 @@
 import { Col, Row, Input, Typography, Radio, Select, Tag } from 'antd';
 import { useState } from 'react';
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // import { priorityFilterChange, searchFilterChange, statusFilterChange } from '../../redux/actions';
 import filterSlice from './FilterSlice';
+// import { todosRemainingSelector } from '../../redux/selectors'
 
 const { Search } = Input;
 
 export default function Filters() {
   const dispatch = useDispatch();
+
+  // const todoList = useSelector(todosRemainingSelector)
+  // console.log('todoList', todoList);
 
   const [searchText, setSearchText] = useState('')
   const [filterStatus, setFilterStatus] = useState('All')
@@ -37,7 +41,7 @@ export default function Filters() {
         >
           Search
         </Typography.Paragraph>
-        <Search placeholder='input search text' value={searchText}  onChange={handleSearchTextChange}/>
+        <Search placeholder='input search text' value={searchText} onChange={handleSearchTextChange} />
       </Col>
       <Col sm={24}>
         <Typography.Paragraph
